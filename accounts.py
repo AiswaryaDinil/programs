@@ -34,40 +34,18 @@ accounts = [
         {"to": 1003, "amount": 100, "note": "erchrge", "method": "phone-pay"}
     ]
     },
+
 ]
+# for ac in accounts:
+#     if ac ["acno"]==1002:
+#         transactions=ac.pop("transactions")
+#         print(ac)
 
-#q4 prit all phone pay transactions
+ac_details=[ ac for ac in accounts if ac["acno"]==1002]
+print(ac_details)
 
-# all_trans=[ac["transactions"] for ac in accounts]
-# phn_pay=[trans for tlist in all_trans for trans in tlist if trans["method"]=="phone-pay"]
-# print(phn_pay)
+savings_type=[ ac ["acno"] for ac in accounts if ac["ac_type"]=="savings"]
+print(savings_type)
 
-#q4 prit all transactions where transaction amount > 500
-
-# all_trans=[ac["transactions"] for ac in accounts]
-# trans_amt=[trans for tlist in all_trans for trans in tlist if trans["amount"]>500]
-# print(trans_amt)
-
-#q5 crredit transactions of 1002
-
-# all_trans=[ac["transactions"] for ac in accounts]
-# credit_trans=[trans for tlist in all_trans for trans in tlist if trans["to"]==1002]
-# print(credit_trans)
-
-
-#q6 aggregate transactions based on payment mode
-
-pms={}
-all_trans=[ac["transactions"] for ac in accounts]
-transactions=[t for tlist in all_trans for t in tlist]
-for transaction in transactions:
-    p_methods=transaction["method"]
-    amount=transaction["amount"]
-    if p_methods in pms:
-        pms[p_methods]+=amount
-    else:
-        pms[p_methods]=amount
-print(pms)
-
-max_amt=max(pms.items(),key=lambda it:it[1])
-print(max_amt)
+accounts.sort(reverse=True, key=lambda ac:ac["balance"])
+print(accounts)
