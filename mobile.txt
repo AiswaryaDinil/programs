@@ -1,0 +1,3 @@
+A50,samsung,34000,4g,oled
+A55,samsung,35000,5g,led
+note11,redmi,17000,4g,led
