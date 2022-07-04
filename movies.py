@@ -7,6 +7,7 @@ for line in fmovies:
     all_movies.append(movies)
 # print(all_movies)
 
+
 count=0
 for mov in all_movies:
     if mov[1]=="2022":
@@ -27,7 +28,7 @@ print(theater_release)
 
 # list of movies whose rating > 5
 
-rating5=[mov for mov in all_movies if mov[2]>"5"]
+rating5=[mov for mov in all_movies if mov[2]>="5"]
 print(rating5)
 
 # {released movies->2022:4,2021:6,2020:2}
@@ -35,15 +36,14 @@ print(rating5)
 year_released={}
 mov_year=[mov[1] for mov in all_movies]
 print(mov_year)
-for mov in mov_year:
-    if mov in year_released:
-        year_released[mov]+=1
+for year in mov_year:
+    if year in year_released:
+        year_released[year]+=1
     else:
-        year_released[mov]=1
+        year_released[year]=1
 print(year_released)
 
 
 # highest movie release year=2021
 
 print(max(year_released,key=lambda mov:year_released[mov]))
-
